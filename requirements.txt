@@ -1,0 +1,5 @@
+opencv-python
+psutil  
+scipy
+scikit-image
+numba
