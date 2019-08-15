@@ -175,7 +175,7 @@ if __name__ == '__main__':
     filepath = './maps/map.pgm'
     Robot_Pixels =  20
 
-    if False:
+    if True:
         filepath = './maps/sample_map.pgm'
         Robot_Pixels =  10
     

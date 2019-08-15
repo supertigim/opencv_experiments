@@ -111,30 +111,24 @@ def rotate_pixel(xy, degrees, center=(0,0)):
     return int(m.T[0]), int(m.T[1])
 
 def draw_grid_on_map(save_filepath, img_org, line_interval, h_s=0, w_s=0):
+    ''' Draw grid lines on map '''
     if save_filepath is None: return 
-
     grid_img = np.copy(img_org)
     (height, width) = grid_img.shape[:2]
 
-    x = 0
-    while x < width:
-        x = x + line_interval
+    for x in range(0, width, line_interval):
         cv2.line(grid_img, (w_s+x, 0), (w_s+x, height-1), (0, 0, 0), 2)
 
-    y = 0
-    while y < height:
-        y = y + line_interval
+    for y in range(0, height, line_interval):
         cv2.line(grid_img, (0, y+h_s), (width-1, y+h_s), (0, 0, 0), 2)
         cv2.line(grid_img, (0, y+h_s), (width-1, y+h_s), (255, 0, 0), 1)
-
-    x = 0
-    while x < width:
-        x = x + line_interval
+    for x in range(0, width, line_interval):
         cv2.line(grid_img, (x+w_s, 0), (x+w_s, height-1), (255, 0, 0), 1)  
 
     save_image(grid_img, save_filepath)
 
 def path_on_map(map, robot_pixels, save_filepath=None):
+    ''' Draw available path on map'''
     kernel = create_circular_kernel(robot_pixels//2) 
     path_map_img = cv2.erode(map, kernel, iterations=1) 
     save_image(path_map_img, save_filepath)
