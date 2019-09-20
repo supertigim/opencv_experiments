@@ -103,7 +103,7 @@ def make_binary_img(img, threshold):
 def rotate_pixel(xy, degrees, center=(0,0)):
     """Use numpy to build a rotation matrix and take the dot product."""
     #x, y = xy
-    x, y = xy[0] - center[0], xy[1] - center[0]
+    x, y = xy[0] - center[0], xy[1] - center[1]
     radians = math.radians(degrees)
     c, s = np.cos(radians), np.sin(radians)
     j = np.matrix([[c, s], [-s, c]])
